@@ -4,16 +4,13 @@ class Solution {
         for(int num:nums){
             if(num == 1){
                 count++;
-            } else {
                 if(count > max){
                     max = count;
                 }
+            } else {
                 count = 0;
             }
         }
-        if(count > max){
-            max = count;
-          }
         return max;
     }
 }
