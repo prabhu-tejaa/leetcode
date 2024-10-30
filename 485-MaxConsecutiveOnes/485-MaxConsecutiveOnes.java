@@ -5,10 +5,15 @@ class Solution {
             if(num == 1){
                 count++;
             } else {
-                max = Math.max(max,count);
+                if(count > max){
+                    max = count;
+                }
                 count = 0;
             }
         }
-        return Math.max(max,count);
+        if(count > max){
+            max = count;
+          }
+        return max;
     }
 }
