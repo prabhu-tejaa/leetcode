@@ -6,9 +6,9 @@
 class Solution extends SolBase {
     public int rand10() {
         int sol = (rand7()-1)+7*(rand7()-1);
-        while(sol>=40){
+        while(sol >= 40){
             sol = (rand7()-1)+7*(rand7()-1);
         }
-        return (sol%10)+1;
+        return sol%10+1;
     }
 }
