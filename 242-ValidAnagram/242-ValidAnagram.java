@@ -6,29 +6,18 @@ class Solution {
         if(sLength != tLength){
             return false;
         };
+        for (int i = 0; i < s.length(); i++) {
+            char ch1 = s.charAt(i);
+            char ch2 = t.charAt(i);
 
-        for(int i = 0; i< sLength; i++){
-            char ch = s.charAt(i);
-            freqMap.put(ch, freqMap.getOrDefault(ch, 0)+1);
+            freqMap.put(ch1, freqMap.getOrDefault(ch1, 0) + 1);
+            freqMap.put(ch2, freqMap.getOrDefault(ch2, 0) - 1);
         }
 
-        for(int i = 0; i< tLength;i++){
-            char ch = t.charAt(i);
-               if (!freqMap.containsKey(ch) || freqMap.get(ch) == 0) {
-                return false;
-            }
-            freqMap.put(ch, freqMap.get(ch) - 1);
-        }
-        for (int count : freqMap.values()) {
-            if (count != 0) {
-                return false;
-            }
+        for (int value : freqMap.values()) {
+            if (value != 0) return false;
         }
 
         return true;
-
-
-
-
-    }
+        }
 }
