@@ -1,29 +1,28 @@
-// Last updated: 4/6/2025, 4:45:18 PM
+// Last updated: 4/6/2025, 4:56:52 PM
 class MinStack {
-    Stack<Pair>minStack;
-
+    Stack<Pair>stack;
     public MinStack() {
-        minStack = new Stack<>();
+        stack = new Stack<>();
     }
     
     public void push(int val) {
-        int min = minStack.isEmpty() ? val : Math.min(val, minStack.peek().min);
-        minStack.push(new Pair(val, min));
+        int min = stack.isEmpty() ? val : Math.min(val, getMin());
+        stack.push(new Pair(val, min));
     }
     
     public void pop() {
-        minStack.pop();
+        stack.pop();
     }
     
     public int top() {
-        return minStack.peek().val;
+        return stack.peek().val;
     }
     
     public int getMin() {
-        return minStack.peek().min;
+        return stack.peek().min;
     }
 
-    class Pair {
+    class Pair{
         int val;
         int min;
 
