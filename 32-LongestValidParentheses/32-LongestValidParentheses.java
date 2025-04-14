@@ -1,4 +1,4 @@
-// Last updated: 4/15/2025, 4:54:09 AM
+// Last updated: 4/15/2025, 4:54:35 AM
 class Solution {
     public int longestValidParentheses(String s) {
         		Stack<Integer>stack = new Stack<>();
@@ -17,7 +17,7 @@ class Solution {
         }
 
         int res = 0, current = 0;
-        for(int i = 0; i<sLength;i++){
+        for(int i = 0; i<=sLength;i++){
             if(i < sLength && ch[i] == '*'){
                 current++;
             } else {
