@@ -1,4 +1,4 @@
-// Last updated: 4/26/2025, 4:39:18 AM
+// Last updated: 4/26/2025, 4:42:21 AM
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -16,9 +16,14 @@
  */
 class Solution {
     public TreeNode searchBST(TreeNode root, int val) {
-        while(root!=null && root.val!=val){
-            root = val<root.val?root.left:root.right;
+        if(root == null || root.val == val){
+            return root;
         }
-        return root;
+
+        if(val<root.val){
+            return searchBST(root.left,val);
+        } else {
+            return searchBST(root.right,val);
+        }
     }
 }
