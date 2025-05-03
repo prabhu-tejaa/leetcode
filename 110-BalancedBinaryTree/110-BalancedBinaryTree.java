@@ -1,4 +1,4 @@
-// Last updated: 4/26/2025, 1:08:09 AM
+// Last updated: 5/3/2025, 4:42:58 PM
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -26,7 +26,7 @@ class Solution {
         int left = height(root.left);
         int right = height(root.right);
 
-        if(Math.abs(right-left)>1){
+        if(Math.abs(left-right)>1){
             return false;
         }
 
