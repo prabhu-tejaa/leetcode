@@ -1,24 +1,23 @@
-// Last updated: 3/30/2025, 1:28:52 PM
+// Last updated: 7/17/2025, 10:39:29 PM
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        int sizeOfNumbersArray = numbers.length;
-        int[] answer = new int[sizeOfNumbersArray];
-        int initial = 0;
+        int numLength = numbers.length;
 
-        int leftPointer = 0;
-        int rightPointer = sizeOfNumbersArray - 1;
+        int left = 0;
+        int right = numLength-1;
 
-        while(leftPointer < rightPointer){
-            int sum = numbers[leftPointer] + numbers[rightPointer];
+        while(left < right){
+            int sum = numbers[left] + numbers[right];
 
             if(sum == target){
-                return new int[]{leftPointer+1, rightPointer+1};
+                return new int[]{left+1,right+1};
             }
 
-            if(sum < target){
-                leftPointer++;
+            if(sum > target){
+
+                right--;
             } else {
-                rightPointer--;
+                left++;
             }
         }
         return new int[]{};
