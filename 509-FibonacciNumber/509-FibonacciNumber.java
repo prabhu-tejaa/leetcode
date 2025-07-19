@@ -1,4 +1,4 @@
-// Last updated: 5/20/2025, 6:35:04 PM
+// Last updated: 7/20/2025, 12:04:21 AM
 class Solution {
     public int fib(int n) {
         if(n <= 1) return n;
