@@ -1,63 +1,68 @@
-// Last updated: 7/16/2025, 11:10:41 PM
+// Last updated: 7/20/2025, 9:41:49 PM
 class Solution {
     public int orangesRotting(int[][] grid) {
         int rows = grid.length;
         int cols = grid[0].length;
-
-        
         if(grid == null || rows == 0 || cols == 0){
             return -1;
         }
-        
+
+        int TotalRottedOranges = 0;
         int totalOranges = 0;
         int minutes = 0;
-        int rottenOranges = 0;
 
-        Queue<int[]> queue = new LinkedList<>();
+        Queue<int[]> rottenOranges = new LinkedList<>();
 
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
-                if (grid[r][c] != 0) {
+        for(int r = 0; r < rows; r++){
+            for(int c = 0; c < cols; c++){
+                if(grid[r][c] != 0){
                     totalOranges++;
                 }
-                if (grid[r][c] == 2) {
-                    rottenOranges++;
-                    queue.offer(new int[]{r, c});
+
+                if(grid[r][c] == 2){
+                    TotalRottedOranges++;
+                    rottenOranges.add(new int[]{r,c});
                 }
             }
         }
 
-        int[] X = {-1, 0, 1, 0};
-        int[] Y = {0, 1, 0, -1};
+        if(totalOranges == 0){
+            return 0;
+        }
 
-        while (!queue.isEmpty()) {
-            int currentSize = queue.size();
-            boolean anyNewRotten = false;
+        if(TotalRottedOranges == 0){
+            return -1;
+        }
 
-            for(int i = 0; i < currentSize; i++) {
-                int[] pairOfRowCols = queue.poll();
+        while(!rottenOranges.isEmpty()){
+            int currrentQueueSize = rottenOranges.size();
+            boolean anyRottedOranges = false;
 
-                if(pairOfRowCols == null) continue;
-                
-                int row = pairOfRowCols[0];
-                int col = pairOfRowCols[1];
+            for(int i = 0; i < currrentQueueSize; i++){
+                int[] rottedOrange = rottenOranges.poll();
 
-                for (int j = 0; j < 4; j++) {
-                    int newX = row + X[j];
-                    int newY = col + Y[j];
+                int row = rottedOrange[0];
+                int col = rottedOrange[1];
 
-                    if (newX >= 0 && newX < rows && newY >= 0 && newY < cols && grid[newX][newY] == 1) {
+                int[] X = {-1,0,1,0};
+                int[] Y = {0,1,0,-1};
+
+                for(int k = 0; k < 4; k++){
+                    int newX = row + X[k];
+                    int newY = col + Y[k];
+
+                    if(newX >= 0 && newY >= 0 && newX < rows && newY < cols && grid[newX][newY] == 1){
                         grid[newX][newY] = 2;
-                        queue.offer(new int[]{newX, newY});
-                        rottenOranges++;
-                        anyNewRotten = true;
+                        rottenOranges.offer(new int[]{newX, newY});
+                        TotalRottedOranges++;
+                        anyRottedOranges = true;
                     }
                 }
             }
-        if (anyNewRotten) {
+            if(anyRottedOranges){
             minutes++;
+            }
         }
-    }
-        return (rottenOranges == totalOranges) ? minutes : -1;
+        return TotalRottedOranges == totalOranges ? minutes : -1;
     }
 }
