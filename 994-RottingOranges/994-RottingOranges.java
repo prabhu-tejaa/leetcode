@@ -1,4 +1,4 @@
-// Last updated: 9/10/2025, 11:57:50 PM
+// Last updated: 9/11/2025, 2:05:34 AM
 class Solution {
     public int orangesRotting(int[][] grid) {
         int rows = grid.length;
