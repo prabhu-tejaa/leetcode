@@ -1,4 +1,4 @@
-// Last updated: 2/5/2026, 2:57:40 PM
+// Last updated: 2/5/2026, 2:58:02 PM
 1class Solution {
 2    public int maxProfit(int[] prices) {
 3        int pricesLength = prices.length;
@@ -10,7 +10,7 @@
 9                minPrice = prices[i];
 10            }
 11
-12            else if(prices[i] - minPrice > maxProfit){
+12            if(prices[i] - minPrice > maxProfit){
 13                maxProfit = prices[i] - minPrice;
 14            }
 15        }
